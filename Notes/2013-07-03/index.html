@@ -1,0 +1,790 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic|Courier New:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Algorithm,Josephus Problem,Ruby,算法,约瑟夫环,约瑟夫问题," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="AreaZero" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="[toggle Title=”一些日常題外話”]先借地廢話兩句像日誌的話。Codecademy的Ruby Tutorial告一段落後，稍微有點迷茫。我對編程的學習總是很容易止步於不知道該做一個什麼小project來練手。目前大概只能慢慢補足算法的學習。不得不說以我這種舊年代的海馬體，大學知識都還給老師了實屬正常。雖然還是在學校裏學到了許多CS的軟文化，那些讓我一只腳踏進了門的知識對我從今以後另一只">
+<meta property="og:type" content="article">
+<meta property="og:title" content="約瑟夫環問題Josephus Problem">
+<meta property="og:url" content="http://www.areazero-rirvana.net/Notes/2013-07-03/index.html">
+<meta property="og:site_name" content="AreaZero">
+<meta property="og:description" content="[toggle Title=”一些日常題外話”]先借地廢話兩句像日誌的話。Codecademy的Ruby Tutorial告一段落後，稍微有點迷茫。我對編程的學習總是很容易止步於不知道該做一個什麼小project來練手。目前大概只能慢慢補足算法的學習。不得不說以我這種舊年代的海馬體，大學知識都還給老師了實屬正常。雖然還是在學校裏學到了許多CS的軟文化，那些讓我一只腳踏進了門的知識對我從今以後另一只">
+<meta property="og:updated_time" content="2016-07-12T15:26:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="約瑟夫環問題Josephus Problem">
+<meta name="twitter:description" content="[toggle Title=”一些日常題外話”]先借地廢話兩句像日誌的話。Codecademy的Ruby Tutorial告一段落後，稍微有點迷茫。我對編程的學習總是很容易止步於不知道該做一個什麼小project來練手。目前大概只能慢慢補足算法的學習。不得不說以我這種舊年代的海馬體，大學知識都還給老師了實屬正常。雖然還是在學校裏學到了許多CS的軟文化，那些讓我一只腳踏進了門的知識對我從今以後另一只">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 約瑟夫環問題Josephus Problem | AreaZero </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">AreaZero</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                約瑟夫環問題Josephus Problem
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-07-03T01:13:40+08:00" content="2013-07-03">
+              2013-07-03
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Notes/" itemprop="url" rel="index">
+                    <span itemprop="name">Notes</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/Notes/2013-07-03/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Notes/2013-07-03/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>[toggle Title=”一些日常題外話”]<br>先借地廢話兩句像日誌的話。<br>Codecademy的Ruby Tutorial告一段落後，稍微有點迷茫。我對編程的學習總是很容易止步於不知道該做一個什麼小project來練手。目前大概只能慢慢補足算法的學習。<br>不得不說以我這種舊年代的海馬體，大學知識都還給老師了實屬正常。雖然還是在學校裏學到了許多CS的軟文化，那些讓我一只腳踏進了門的知識對我從今以後另一只腳也踏進門的未來受益良多。<br>當然某種程度上也和我和畫畫死情緣了有關係。<br>儘管畫畫真是一種思想與靈感之美的表達，真的。</p>
+<p>最近的心情或者說心態慢慢趨向正常。儘管情緒還是像黑色的潮汐一樣時漲時退。月球就在那裏，可你無法阻止它。而且更糟糕的是，大多數時候沒有月球也沒有公轉，潮汐只是自己在漲漲退退而已。<br>但是所幸的是這幾天背單詞寫代碼學算法，一步一步計劃自己每天要做的那麽兩三件事，似乎逐漸充實。雖然在下一個岔路到來的時候不知道能不能順利做出選擇，但是至少在那之前的路似乎能暫時踏實地走完。<br>更年輕的時候非常討厭時間和規劃表，尤其是別人的時間表，比如課程表和作業死線。我覺得這就像不允許我自由縮進代碼一樣看不到自由。<br>其實現在我也還是喜歡可以完全自己支配的大塊的自由時間的，不管是白天還是晚上。但是現在更明白計劃時間才會讓時間更有效而充實的道理。就像知道了代碼不能亂縮進，不然對眼睛不好的一樣。<br>每天看幾篇好文章，看看新聞，背單詞，學習，寫代碼。有心情又有時間的時候，玩玩遊戲。<br>挺好的。</p>
+<p>相應的問題是。我還有想畫的東西和想寫的文。現在時間被學習代碼擠掉了。<br>當然，這是別論了。<br>今晚就來更文。<br>儘管靈感還卡著。</p>
+<p>不廢話了。<br>[/toggle]</p>
+<p>約瑟夫環。<br>以<a href="http://zh.wikipedia.org/wiki/弗拉維奧·約瑟夫斯" target="_blank" rel="external">弗拉維奧·約瑟夫斯</a>（<a href="http://en.wikipedia.org/wiki/Flavius_Josephus" target="_blank" rel="external">Flavius Josephus</a>）的名字命名的計算機科學和數學問題。關於這個多餘的背景介紹不說了，想稍微瞭解一下的可以查看這裏：<a href="http://en.wikipedia.org/wiki/Josephus_problem#History" target="_blank" rel="external">Josephus Problem#History</a><br>在國內有些網站上也被叫作丟手帕問題。雖然不知道名字怎麼來的。</p>
+<p><a href="http://en.wikipedia.org/wiki/Josephus_problem#History" target="_blank" rel="external">
+</a>問題的描述很簡單。</p>
+<ol>
+<li>一共有N個人圍成一圈。</li>
+<li>從第一個人開始，數到K的時候將K位置上的人出列。</li>
+<li>從K+1開始重新數。</li>
+<li>重複2和3步驟，直到剩下一個人。<br>求：最後一個人在原來隊列中位置，以及出列的順序。</li>
+</ol>
+<p>分別用循環和遞歸兩種方法來做。語言是Ruby。<br>因為Ruby語言本身非常易讀直觀。完全可以當成英文來讀。而且最近Ruby學得高興，沒有寫Java的心情……<br>[toggle Title=”Josephus Problem#Iterative Version”]<br>用循環的方法來模擬這個過程非常簡單。<br>思路大概是這樣的。</p>
+<blockquote>
+<p>新建一個列表a，長度為N。</p>
+<p>計數器+1</p>
+<p>如果 計數器 等於 K</p>
+<p>++將K位置移出隊列。</p>
+<p>++計數器=0</p>
+<p>++出列計數器＋1</p>
+<p>++輸出被移除的位置</p>
+<p>指針移到K+1位置</p>
+<p>如果 指針 指向了列表的末端</p>
+<p>++<span style="color: #3366ff;">指針回到0重新開始計數</span>(使數組成為環形結構的重點)<br>循環直到隊列為空。輸出的最後一順位即為最後留下的人的原位置。<br>（+號是為了空格排版。b-quote內不支持縮進，一直不知道該怎麼弄。這個主題各個方面都好，唯獨b-quote讓我很煩惱。）</p>
+</blockquote>
+<p>這個在Java中使用環形鏈表做起來很直觀。但是用Java和環形鏈表實現會費去太多別的精力在算法以外的東西上。不值得。<br>下面貼Ruby寫的循環版方法。</p>
+<pre lang="Ruby" line="1"># Josephus problem solving by iterating analogy.
+def josephusI(players, count_off)
+  # set each element to be 1
+  player_array = Array.new(players) { |element| element = 1 }
+  count_out = 0
+  counts = 0
+  arr_index = 0
+
+  until count_out &gt; players - 1
+    counts += player_array[arr_index] if player_array[arr_index] == 1
+    if counts == count_off
+      # set the dequeued element to be 0, i.e. it has been counted out
+        player_array[arr_index] = 0 
+        counts = 0
+      count_out += 1
+        puts "The #{count_out}th dequeueing: #{arr_index}"
+      end
+      arr_index += 1
+    # if the index reaches the end, restart from 0.
+    #   This makes the array to be circle.
+    arr_index = 0 if arr_index == players 
+  end
+end</pre>
+[/toggle]
+
+[toggle Title="Josephus Problem#Recursive Version"]
+遞歸版的代碼簡潔到寒磣。但是信息量很大。年輕的時候用wise check來學遞歸，現在寫遞歸不管int check還是wise check，其DC都像一個不可能達到的高度。
+昨晚看到迷迷糊糊最後放棄了然後趴床便睡。今天起床後才把遞歸看明白。
+遞歸的中心表達式是**f(n,k) = (f(n-1,k)+k) mod n**
+Josephus Problem的通常表達式的推導應該是來自Donald E. Kruth的某本書。類似的推導過程和sample code在Wikipedia上有。只不過這樣無法打印出列的順序。
+推導的難點在於動態運算的 (f(n,k)+k) mod n。實際上這個是先深入到當f(1,k)，也就是隊列中只剩下一個人的時候，返回下標0。然後再遞歸向上計算在上一圈，上上一圈這個人的位置。
+這個最好需要自己拿筆一層一層地跟蹤一遍。跟蹤的過程略長……今天太困了就不寫過程了。
+以下是簡潔到寒磣的代碼。數學的力量真是偉大。
+<pre lang="Ruby" line="1"># Josephus problem general case
+# READMORE: http://en.wikipedia.org/wiki/Josephus_problem#The_general_case
+def josephusR(players, count_off)
+  if players == 1
+     return 0
+  else
+    return (josephusR(players - 1, count_off) + count_off) % players
+  end
+end</pre>
+實際上這個算法稍加變化就可以實現打印所有出列順序。
+但是今天太困了……（揍
+[/toggle]
+
+大致的程序實現就是這樣。
+實際結果如下。
+![JosephusProblemSolution](http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/07/C290F308-C6CA-4BB8-96A0-896293C3B753.jpg)
+不過即使是遞歸算法，複雜度也有O(n)，如果人數設定得非常大，運行效率就略緩慢。
+優化的方法，我這種菜鳥是想不出了。
+第二頁慣例貼全篇代碼。
+<!--nextpage-->
+<pre lang="Ruby" line="1">=begin
+Created on: 2013-7-02
+By: Ether0xF
+
+Josephus problem is a cetain counting-out game.
+There are N people standing in a circle, and counting out begins at no# M.
+In each step of the counting process, the player at Kth position would be dequeued.
+The game countinues to proceed around from next persom of K.
+
+players =&gt; number of players involved
+count_off =&gt; to which number the person should be dequeued.
+=end
+
+# Josephus problem solving by iterating analogy.
+def josephusI(players, count_off)
+  # set each element to be 1
+  player_array = Array.new(players) { |element| element = 1 }
+  count_out = 0
+  counts = 0
+  arr_index = 0
+
+  until count_out &gt; players - 1
+    counts += player_array[arr_index] if player_array[arr_index] == 1
+    if counts == count_off
+      # set the dequeued element to be 0, i.e. it has been counted out
+        player_array[arr_index] = 0 
+        counts = 0
+      count_out += 1
+        puts "The #{count_out}th dequeueing: #{arr_index}"
+      end
+      arr_index += 1
+    # if the index reaches the end, restart from 0.
+    #   This makes the array to be circle.
+    arr_index = 0 if arr_index == players 
+  end
+end
+
+# Josephus problem general case. Implementation in recursion.
+# READMORE: http://en.wikipedia.org/wiki/Josephus_problem#The_general_case
+def josephusR(players, count_off)
+  if players == 1
+     return 0
+  else
+    return (josephusR(players - 1, count_off) + count_off) % players
+  end
+end
+
+puts "Tell me the number of players: "
+players = gets.chomp.to_i
+puts "To which number that the person should be counted out?"
+count_off = gets.chomp.to_i
+
+# Output the iterating version
+puts "----Below is the iterating version----"
+josephusI(players, count_off)
+
+# Output the recursive version
+puts "----Below is the recursive version----"
+puts "The last number is: #{josephusR(players, count_off)}"</pre>
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag">#Algorithm</a>
+          
+            <a href="/tags/Josephus-Problem/" rel="tag">#Josephus Problem</a>
+          
+            <a href="/tags/Ruby/" rel="tag">#Ruby</a>
+          
+            <a href="/tags/算法/" rel="tag">#算法</a>
+          
+            <a href="/tags/约瑟夫环/" rel="tag">#约瑟夫环</a>
+          
+            <a href="/tags/约瑟夫问题/" rel="tag">#约瑟夫问题</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/journey/2013-06-30/" rel="next" title="最近的折騰">
+                <i class="fa fa-chevron-left"></i> 最近的折騰
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Notes/2013-07-06/" rel="prev" title="玩了一晚上编辑器">
+                玩了一晚上编辑器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="十六望·Ether0xF" />
+          <p class="site-author-name" itemprop="name">十六望·Ether0xF</p>
+          <p class="site-description motion-element" itemprop="description">Alea jacta est</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">179</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2011 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">十六望·Ether0xF</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'ether0xf';
+      var disqus_identifier = 'Notes/2013-07-03/';
+      var disqus_title = '約瑟夫環問題Josephus Problem';
+      var disqus_url = 'http://www.areazero-rirvana.net/Notes/2013-07-03/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

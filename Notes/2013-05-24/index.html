@@ -1,0 +1,801 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic|Courier New:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java,Algorithm," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="AreaZero" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="前幾日那個『貓的體重』的題目，幸得Ellena的評論提醒發現了一處錯誤。果然是腦子鈍了。當時雖然想到了用係數(k1+k2)&amp;lt;1來判斷無窮生長，但是沒有反應過來這其實是個無窮遞縮數列。因此公比(k1+k2)&amp;lt;1應該為|k1+k2|&amp;lt;1。加上貓的體重允許負數，因此判斷無窮生長的條件更加複雜一些。將判斷方法略做修改。不得不說，體重允許負數這個條件真是比想象中噁心。
+代碼新改動了判斷貓的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="貓的體重~SP~">
+<meta property="og:url" content="http://www.areazero-rirvana.net/Notes/2013-05-24/index.html">
+<meta property="og:site_name" content="AreaZero">
+<meta property="og:description" content="前幾日那個『貓的體重』的題目，幸得Ellena的評論提醒發現了一處錯誤。果然是腦子鈍了。當時雖然想到了用係數(k1+k2)&amp;lt;1來判斷無窮生長，但是沒有反應過來這其實是個無窮遞縮數列。因此公比(k1+k2)&amp;lt;1應該為|k1+k2|&amp;lt;1。加上貓的體重允許負數，因此判斷無窮生長的條件更加複雜一些。將判斷方法略做修改。不得不說，體重允許負數這個條件真是比想象中噁心。
+代碼新改動了判斷貓的">
+<meta property="og:image" content="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305241836.jpg">
+<meta property="og:image" content="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305241838.jpg">
+<meta property="og:image" content="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305241841.jpg">
+<meta property="og:image" content="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305241845.jpg">
+<meta property="og:image" content="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/2013052418451.jpg">
+<meta property="og:image" content="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305241848.jpg">
+<meta property="og:image" content="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305241858.jpg">
+<meta property="og:image" content="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305241924.jpg">
+<meta property="og:image" content="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305241938.jpg">
+<meta property="og:image" content="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305241942.jpg">
+<meta property="og:image" content="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305241946.jpg">
+<meta property="og:image" content="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305242002.jpg">
+<meta property="og:image" content="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305242005.jpg">
+<meta property="og:image" content="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305242008.jpg">
+<meta property="og:updated_time" content="2016-07-12T15:24:17.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="貓的體重~SP~">
+<meta name="twitter:description" content="前幾日那個『貓的體重』的題目，幸得Ellena的評論提醒發現了一處錯誤。果然是腦子鈍了。當時雖然想到了用係數(k1+k2)&amp;lt;1來判斷無窮生長，但是沒有反應過來這其實是個無窮遞縮數列。因此公比(k1+k2)&amp;lt;1應該為|k1+k2|&amp;lt;1。加上貓的體重允許負數，因此判斷無窮生長的條件更加複雜一些。將判斷方法略做修改。不得不說，體重允許負數這個條件真是比想象中噁心。
+代碼新改動了判斷貓的">
+<meta name="twitter:image" content="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305241836.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 貓的體重~SP~ | AreaZero </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">AreaZero</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                貓的體重~SP~
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-05-24T12:41:35+08:00" content="2013-05-24">
+              2013-05-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Notes/" itemprop="url" rel="index">
+                    <span itemprop="name">Notes</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/Notes/2013-05-24/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Notes/2013-05-24/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>前幾日那個『貓的體重』的題目，幸得<a href="http://www.areazero-rirvana.net/blog/archives/1160#comment-318" title="Ellena回復貓的體重">Ellena的評論</a>提醒發現了一處錯誤。<br>果然是腦子鈍了。當時雖然想到了用係數<strong><em>(k1+k2)&lt;1</em></strong>來判斷無窮生長，但是沒有反應過來這其實是個無窮遞縮數列。<br>因此公比<strong><em>(k1+k2)&lt;1</em></strong>應該為<strong><em>|k1+k2|&lt;1</em></strong>。<br>加上貓的體重允許負數，因此判斷無窮生長的條件更加複雜一些。將判斷方法略做修改。<br>不得不說，體重允許負數這個條件真是比想象中噁心。</p>
+<p>代碼新改動了判斷貓的體重增長的方法weightGrow()，根據以下公比的不同情況進行判斷。<br>然後為了代碼的美觀，將成長天數遞增的循環單獨寫了一個方法 int dayPlus(int dayin)。新的weightGrow()各種條件語句的嵌套和層層縮進已經快要觸發我的強迫症因此我決定稍微減少一下嵌套和縮進。<br>最後為了方便測試，改善輸出樣式以求美觀可讀。<br><span style="text-decoration: line-through;">順便說句iTerm的背景圖片果然還是放刺客信條帶感。</span></p>
+<p>關於等比數列公比的內容看這裏：<a href="http://en.wikipedia.org/wiki/Geometric_series#Common_ratio" title="Geomatric Series#Common Ratio" target="_blank" rel="external">Geometirc Series#Common Ratio</a></p>
+<p>要使貓的體重無窮增長，且因為有體重限制(upper bound)，則要使等比數列<em>totalWeight(i + 1) = (k1+k2) * totalWeight(i)</em>無窮遞縮。由於有體重限制和負體重的情況，這個等比數列和普通無窮等比數列的不同就是，不討論<strong>收斂(converge)</strong>和<strong>發散(diverge)</strong>以及<strong>極限(limit)</strong>的情況。<br><span style="color: #e23922;">換言之，逐日的體重能無窮遞縮就行。<br></span>由於貓的體重可以為負數，在第一天的初始體重<strong><em>weight(1) ≤ k</em></strong>的大前提下（否則第一天就不會繼續生長，立刻停止）要分為三種情況來討論公比的各種情況。（等我再去扒拉一張草稿紙來……</p>
+<p><span style="color: #5675d4;"><span style="text-decoration: underline;"><strong>第一種情況：</strong></span></span><strong><em>k &gt;0
+</em></strong>這個屬於一般情況，無窮遞縮數列種所有項ai∈R且所有ai的和不大於體重限制k。（按照這隻貓的尿性體重為無理數應該也是妥妥的沒問題）<br>因此公比<strong>r = (k1 + k2)</strong>分以下情況：</p>
+<ul>
+<li><strong><em>|r| &lt; 1</em></strong> i.e. <strong><em>-1 &lt; r &lt; 1
+</em></strong>數列各項無限向0收斂。<span style="color: #e23922;">inf</span>。</li>
+<li><strong><em>r &gt; 1
+</em></strong>當<strong><em>weight(1) &gt; 0</em></strong>時，體重最終超過限制k，<span style="color: #e23922;">停止生長</span>。當<strong><em>weight(1) &lt; 0</em></strong>時，數值向負無窮發散。<span style="color: #e23922;">inf</span>。</li>
+<li><strong><em>r &lt; -1
+</em></strong>體重在正負間振盪並最終超過限制k。<span style="color: #e23922;">停止生長</span>。</li>
+<li><strong><em>r = 1
+</em></strong>奇葩的情況其一，體重會無限地保持初始值。由於有<strong>weight(1)≤k</strong>的大前提，這個該算是已經停止生長了呢，還是算是無限呢……這裏視作<span style="color: #e23922;">inf</span>。</li>
+<li><p><strong><em>r = -1
+</em></strong>奇葩的情況其二。體重會在<strong><em>±firstDayWeight</em></strong>之間<strong>振盪</strong>（<strong>oscillation</strong>，想了很久不知道這個詞在中文裏怎麼說，感謝123君指點，最終敲定了振盪這個詞），但是由於有大前提。<span style="color: #e23922;">inf</span>。<br><span style="color: #5675d4;"><span style="text-decoration: underline;"><strong>第二種情況：</strong></span></span><strong><em>k ≤ 0</em></strong> and <strong><em>weight(1) &lt; 0
+</em></strong>很容易引起問題的一個情況。特別特別討厭……需要一些仔細的考慮。<br>因此公比<strong>r = (k1 + k2)</strong>分以下情況：</p>
+</li>
+<li><p><strong><em>-1 &lt; r &lt; 0
+</em></strong>雖然會向0收斂但是因為負負得正，所以會超過限制k。<span style="color: #e23922;">停止生長</span>。</p>
+</li>
+<li><strong><em>0 &lt; r &lt; 1
+</em></strong>陷阱。雖然數列無限向0收斂，但是要視k的情況而定。<br>當<strong><em>k &lt; 0</em></strong>時，<span style="color: #e23922;">停止生長</span>。<br>當<strong><em>k = 0</em></strong>時，<span style="color: #e23922;">inf</span>。</li>
+<li><strong><em>r &gt; 1</em></strong>向負無窮發散。<span style="color: #e23922;">inf</span>。</li>
+<li><strong><em>r &lt; -1
+</em></strong>體重在正負間振盪並最終超過限制k。<span style="color: #e23922;">停止生長</span>。</li>
+<li><strong><em>r = 1
+</em></strong>奇葩的情況其一，體重會無限地保持初始值。由於有<strong>weight(1)≤k</strong>的大前提，這個該算是已經停止生長了呢，還是算是無限呢……這裏視作<span style="color: #e23922;">inf</span></li>
+<li><strong><em>r = -1
+</em></strong>奇葩的情況其二。體重會在<strong><em>±firstDayWeight</em></strong>之間振盪，但是由於有大前提。<span style="color: #e23922;">inf</span>。<br><strong><span style="color: #5675d4;"><span style="text-decoration: underline;">第三種情況：</span></span>**</strong>weight = 0<strong> 和 </strong>r = 0<br><strong>這個情況是奇葩中的霸王花。由於初始體重為0，因此不管係數r = (k1+k2)為何，體重都不會有一絲一毫的變化，一直為0。且由於大前提</strong>weight(1)≤k<strong>，所以勢必有</strong><em>k &gt; 0</em><strong> 。於是這個情況就像</strong><em>r = 1</em>**一樣，視作<span style="color: #e23922;">inf</span>。相同，由於r = 0，不管初始體重為何都會變為0。不過，這個只在k ≥ 0時為<span style="color: #e23922;">inf</span>。當k &lt; 0時，<span style="color: #e23922;">停止生長</span>。</li>
+</ul>
+<p>代碼在第二頁，測試和輸出在第三頁。</p>
+<!--nextpage-->
+<p>[java]<br>    //new on 5-24<br>    public String weightGrow(){<br>        int day = 1;<br>        float r = k1+k2;</p>
+<pre><code>    if(weight(1) &amp;lt;= k){
+
+        if (weight(1) == 0 || Math.abs(r) == 1.0)
+            return &amp;quot;inf&amp;quot;;
+        //------------if k &amp;gt; 0-----------------
+        else if (k &amp;gt; 0){
+            if (Math. abs(r) &amp;lt; 1.0 || r == 0)
+                return &amp;quot;inf&amp;quot;;
+            else if (r &amp;gt; 1.0){
+                if (weight(1) &amp;gt; 0){
+                    day = dayPlus(day);
+                }
+                else if (weight(1) &amp;lt; 0)
+                    return &amp;quot;inf&amp;quot;;
+            }
+            else if (r &amp;lt; -1.0){
+                day = dayPlus(day);
+            }
+        }
+        //-------------if k &amp;lt; 0-----------------
+        else if (k &amp;lt;= 0){
+            if (r == 0){
+                if (k == 0)
+                    return &amp;quot;inf&amp;quot;;
+                else if (k &amp;lt; 0)
+                    day = dayPlus(day);
+            }
+            if (r &amp;gt; -1.0 &amp;amp;&amp;amp; r &amp;lt; 0)
+                day = dayPlus(day);
+            else if (r &amp;gt; 0 &amp;amp;&amp;amp; r &amp;lt; 1.0){
+                if (k == 0.0)
+                    return &amp;quot;inf&amp;quot;;
+                else if (k &amp;lt; 0)
+                    day = dayPlus(day);
+            }
+            else if (r &amp;gt; 1.0)
+                return &amp;quot;inf&amp;quot;;
+            else if (r &amp;lt; -1.0)
+                day = dayPlus(day);
+        }
+    }
+
+    if (day == 1)
+        return Integer.valueOf(day).toString();
+    else
+        return Integer.valueOf(day - 1).toString();
+
+}
+</code></pre><p>[/java]</p>
+<!--nextpage-->
+<p><strong><span style="color: #5675d4;">測試1：</span></strong></p>
+<p>|r| = 1 when k &gt; 0，weight(1) &gt; 0</p>
+<p>——第一組：r = 1</p>
+<p>——第二組：r = -1</p>
+<p><img src="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305241836.jpg" alt="201305241836.jpg"></p>
+<p><span style="color: #5675d4;"><strong>測試2：</strong></span>|r| = 1 when k &gt; 0，weight(1) &lt; 0</p>
+<p>——第一組：r = 1</p>
+<p>——第二組：r = -1</p>
+<p><img src="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305241838.jpg" alt="201305241838.jpg"></p>
+<p><strong><span style="color: #5675d4;">測試3：</span></strong>|r| = 1 when k &lt; 0，weight(1) &lt; 0</p>
+<p>——第一組：r = 1</p>
+<p>——第二組：r = -1</p>
+<p><img src="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305241841.jpg" alt="201305241841.jpg"></p>
+<p><strong><span style="color: #5675d4;">測試4：</span></strong>|r| &lt; 1 when k &gt; 0</p>
+<p>——第一組：0 &lt; r &lt; 1</p>
+<p>——第二組：-1 &lt; r &lt; 0</p>
+<p><img src="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305241845.jpg" alt="201305241845.jpg"></p>
+<p>多測了一組weight(1) &lt; 0的情況，可以看得出並不影響，仍然是inf。</p>
+<p><img src="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/2013052418451.jpg" alt="201305241845.jpg"></p>
+<p><strong><span style="color: #5675d4;">測試5：</span></strong>r &gt; 1 when k &gt; 0</p>
+<p>——第一組：weight(1) &gt; 0</p>
+<p>——第二組：weight(1) &lt; 0</p>
+<p><img src="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305241848.jpg" alt="201305241848.jpg"></p>
+<p><strong><span style="color: #5675d4;">測試6：</span></strong>r &lt; -1 when k &gt; 0</p>
+<p>——第一組：weight(1) &gt; 0</p>
+<p>——第二組：weight(1) &lt; 0</p>
+<p><img src="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305241858.jpg" alt="201305241858.jpg"></p>
+<p><strong><span style="color: #5675d4;"><br></span>**</strong><span style="color: #5675d4;">測試7：</span>**k ≤ 0，-1 &lt; r &lt; 0</p>
+<p>——第一組：k &lt; 0</p>
+<p>——第二組：k = 0</p>
+<p><img src="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305241924.jpg" alt="201305241924.jpg"></p>
+<p><strong><span style="color: #5675d4;">測試8：</span></strong>k ≤ 0，0 &lt; r &lt; 1</p>
+<p>——第一組：k &lt; 0</p>
+<p>——第二組：k = 0</p>
+<p><img src="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305241938.jpg" alt="201305241938.jpg"></p>
+<p><strong><span style="color: #5675d4;">測試9：</span></strong>k ≤ 0，r &gt; 1</p>
+<p>——第一組：k &lt; 0</p>
+<p>——第二組：k = 0</p>
+<p><img src="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305241942.jpg" alt="201305241942.jpg"></p>
+<p><strong><span style="color: #5675d4;">測試10：</span></strong>k ≤ 0，r &lt; -1</p>
+<p>——第一組：k &lt; 0</p>
+<p>——第二組：k = 0</p>
+<p><img src="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305241946.jpg" alt="201305241946.jpg"></p>
+<p><strong><span style="color: #5675d4;">測試11：</span></strong>weight(1) = 0</p>
+<p>——第一組：k &gt; 0</p>
+<p>——第二組：k &lt; 0</p>
+<p>值得說明的是第二組。由於weight(1) = 0 &gt; k，所以在第一天就停止生長，而不是無限生長。</p>
+<p><img src="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305242002.jpg" alt="201305242002.jpg"></p>
+<p><strong><span style="color: #5675d4;">測試12：</span></strong>r = 0</p>
+<p>——第一組：k &gt; 0</p>
+<p>——第二組：k &lt; 0</p>
+<p>——第三組：k = 0</p>
+<p><img src="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305242005.jpg" alt="201305242005.jpg"><br>最後來張題目的sample input的數據。</p>
+<p><img src="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/201305242008.jpg" alt="201305242008.jpg"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag">#Java</a>
+          
+            <a href="/tags/Algorithm/" rel="tag">#Algorithm</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Notes/2013-05-20/" rel="next" title="貓的體重">
+                <i class="fa fa-chevron-left"></i> 貓的體重
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/musiclist/2013-06-10/" rel="prev" title="Solatorobo それからCODAへ Original Soundtracks">
+                Solatorobo それからCODAへ Original Soundtracks <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="十六望·Ether0xF" />
+          <p class="site-author-name" itemprop="name">十六望·Ether0xF</p>
+          <p class="site-description motion-element" itemprop="description">Alea jacta est</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">179</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2011 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">十六望·Ether0xF</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'ether0xf';
+      var disqus_identifier = 'Notes/2013-05-24/';
+      var disqus_title = '貓的體重~SP~';
+      var disqus_url = 'http://www.areazero-rirvana.net/Notes/2013-05-24/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,648 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic|Courier New:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Opera,Vivaldi," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="AreaZero" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="早上起床后打开电脑，面对昨晚浏览器里留下的一地标签页。忽然感到心累。每隔一段时间就会怒Opera不争「我想要这个功能想要那个功能为什么Opera里这个功能没有了这不Opera为什么我的Opera不能好好工作」的躁郁症发作了的感觉。其实它工作得很好，很稳定。但还是会让人觉得，事情不该是这样的。因为从脑细胞乃至到操作鼠标和键盘的手指尖都会记得曾经那么一段激情而辉煌的时候。一回想起来，就会不由得咀嚼「婚">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一个新欢浏览器">
+<meta property="og:url" content="http://www.areazero-rirvana.net/journey/2016-06-22/index.html">
+<meta property="og:site_name" content="AreaZero">
+<meta property="og:description" content="早上起床后打开电脑，面对昨晚浏览器里留下的一地标签页。忽然感到心累。每隔一段时间就会怒Opera不争「我想要这个功能想要那个功能为什么Opera里这个功能没有了这不Opera为什么我的Opera不能好好工作」的躁郁症发作了的感觉。其实它工作得很好，很稳定。但还是会让人觉得，事情不该是这样的。因为从脑细胞乃至到操作鼠标和键盘的手指尖都会记得曾经那么一段激情而辉煌的时候。一回想起来，就会不由得咀嚼「婚">
+<meta property="og:updated_time" content="2016-07-05T07:00:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一个新欢浏览器">
+<meta name="twitter:description" content="早上起床后打开电脑，面对昨晚浏览器里留下的一地标签页。忽然感到心累。每隔一段时间就会怒Opera不争「我想要这个功能想要那个功能为什么Opera里这个功能没有了这不Opera为什么我的Opera不能好好工作」的躁郁症发作了的感觉。其实它工作得很好，很稳定。但还是会让人觉得，事情不该是这样的。因为从脑细胞乃至到操作鼠标和键盘的手指尖都会记得曾经那么一段激情而辉煌的时候。一回想起来，就会不由得咀嚼「婚">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 一个新欢浏览器 | AreaZero </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">AreaZero</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                一个新欢浏览器
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-22T03:00:05+08:00" content="2016-06-22">
+              2016-06-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/journey/" itemprop="url" rel="index">
+                    <span itemprop="name">The Journey</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/journey/2016-06-22/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="journey/2016-06-22/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>早上起床后打开电脑，面对昨晚浏览器里留下的一地标签页。<br>忽然感到心累。<br>每隔一段时间就会怒Opera不争「我想要这个功能想要那个功能为什么Opera里这个功能没有了这不Opera为什么我的Opera不能好好工作」的躁郁症发作了的感觉。<br>其实它工作得很好，很稳定。但还是会让人觉得，事情不该是这样的。因为从脑细胞乃至到操作鼠标和键盘的手指尖都会记得曾经那么一段激情而辉煌的时候。<br>一回想起来，就会不由得咀嚼「婚姻是爱情的坟墓」这句老话。<br>这个比喻好像不对。<br>Anyway.</p>
+<p>我决心至少解决对标签组的需求，尝试搜索了一下Opera的扩展，并没有什么收获。于是干脆想寻找带这个功能的浏览器。<br>然后就找到了<a href="https://vivaldi.com" target="_blank" rel="external">Vivaldi</a>。<br>标签组，标签循环，丰富的自定义快捷键和鼠标手势，可定制的搜索框，键盘操作聚焦，侧栏面板，自定义标签栏位置等等。<br>从进主页看到第一眼的感觉，到这些所有功能，甚至社区的页面，都让人想到Opera。<br>没错其实Vivaldi就是一个presto Opera的<a href="https://vivaldi.com/story/" target="_blank" rel="external">精神续作</a>。<br>但是这又有什么关系呢。<br>自从有了Chrome后，浏览器的趋势似乎就开始趋向于简洁（单？）的本体+一堆扩展来加功能了。甚至连Opera也放下身段加入了这一行列。除了能浏览网页（和并不知道有多大用处的新闻订阅）外，许多事情都要依靠插件扩展。这很Chrome，但是这很不Opera。<br>我们需要更多的本体的定制，自带更多的方便的功能，需要更快捷的操作，需要更有创造性的开发团队。不能凡事都依赖扩展。<br>Vivaldi很好，这很Opera。<br>玩了半小时后我已经把webkit Opera踢出了Dock和默认浏览器了。</p>
+<p>尽管还有一些不完善的地方，和正在开发中未能利用的功能（比如邮件，虽然我倒是有点疑惑邮件面板对一个浏览器而言是不是真的必要<del>虽说以前Opera可是连IRC都能上</del>宁愿单独出一个桌面的邮件客户端），但是作为一个浏览器本体已经很好用了。<br>由于内核是Chromium，还可以依靠Chrome扩展来扩展功能。<br>很多事情随心所欲。</p>
+<p>至少标签组回来了。<br><del>感觉就像找到了新的女朋友一样。</del><br>开心。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Opera/" rel="tag">#Opera</a>
+          
+            <a href="/tags/Vivaldi/" rel="tag">#Vivaldi</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/scratch/2016-04-22/" rel="next" title="Dark Souls 3設定考察雑·幽邃聖堂的主教們">
+                <i class="fa fa-chevron-left"></i> Dark Souls 3設定考察雑·幽邃聖堂的主教們
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/journey/2016-07-05/" rel="prev" title="Hello Hexo!">
+                Hello Hexo! <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="十六望·Ether0xF" />
+          <p class="site-author-name" itemprop="name">十六望·Ether0xF</p>
+          <p class="site-description motion-element" itemprop="description">Alea jacta est</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">179</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2011 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">十六望·Ether0xF</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'ether0xf';
+      var disqus_identifier = 'journey/2016-06-22/';
+      var disqus_title = '一个新欢浏览器';
+      var disqus_url = 'http://www.areazero-rirvana.net/journey/2016-06-22/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

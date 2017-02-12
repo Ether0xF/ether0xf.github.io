@@ -1,0 +1,781 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic|Courier New:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Java,Algorithm," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="AreaZero" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="昨天在技宅找東西的時候看到一個這樣的題目。隨手做一下。題目原本貼過來，红字是讀題的关键。代碼在第二頁（順便測試一下代高亮插件）真的很久很久沒有寫代碼連語法都快忘記了。bug比較多懶得繼續查了，數據的範圍的容錯特別麻煩不再弄了。數據的組數的容錯就一直不成功。不知道是判斷語句的對齊有問題還是怎樣。根本無法執行容錯，干脆就刪掉了。核心的算法還在就好。不過Sublime text2真是跨平臺輕便編輯器利器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="貓的體重">
+<meta property="og:url" content="http://www.areazero-rirvana.net/Notes/2013-05-20/index.html">
+<meta property="og:site_name" content="AreaZero">
+<meta property="og:description" content="昨天在技宅找東西的時候看到一個這樣的題目。隨手做一下。題目原本貼過來，红字是讀題的关键。代碼在第二頁（順便測試一下代高亮插件）真的很久很久沒有寫代碼連語法都快忘記了。bug比較多懶得繼續查了，數據的範圍的容錯特別麻煩不再弄了。數據的組數的容錯就一直不成功。不知道是判斷語句的對齊有問題還是怎樣。根本無法執行容錯，干脆就刪掉了。核心的算法還在就好。不過Sublime text2真是跨平臺輕便編輯器利器">
+<meta property="og:image" content="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/1D19B51F-1A51-4C37-994F-7C2722BB2D40.jpg">
+<meta property="og:updated_time" content="2016-07-12T15:23:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="貓的體重">
+<meta name="twitter:description" content="昨天在技宅找東西的時候看到一個這樣的題目。隨手做一下。題目原本貼過來，红字是讀題的关键。代碼在第二頁（順便測試一下代高亮插件）真的很久很久沒有寫代碼連語法都快忘記了。bug比較多懶得繼續查了，數據的範圍的容錯特別麻煩不再弄了。數據的組數的容錯就一直不成功。不知道是判斷語句的對齊有問題還是怎樣。根本無法執行容錯，干脆就刪掉了。核心的算法還在就好。不過Sublime text2真是跨平臺輕便編輯器利器">
+<meta name="twitter:image" content="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/1D19B51F-1A51-4C37-994F-7C2722BB2D40.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 貓的體重 | AreaZero </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">AreaZero</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                貓的體重
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-05-20T18:35:23+08:00" content="2013-05-20">
+              2013-05-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Notes/" itemprop="url" rel="index">
+                    <span itemprop="name">Notes</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/Notes/2013-05-20/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Notes/2013-05-20/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>昨天在技宅找東西的時候看到一個這樣的題目。隨手做一下。<br>題目原本貼過來，红字是讀題的关键。代碼在第二頁（順便測試一下代高亮插件）<br>真的很久很久沒有寫代碼連語法都快忘記了。bug比較多懶得繼續查了，數據的範圍的容錯特別麻煩不再弄了。數據的組數的容錯就一直不成功。不知道是判斷語句的對齊有問題還是怎樣。根本無法執行容錯，干脆就刪掉了。核心的算法還在就好。<br>不過Sublime text2真是跨平臺輕便編輯器利器。<br>順便對題中故事致敬一個。差點被它繞死了……</p>
+<blockquote>
+<p><strong>Problem Description</strong></p>
+<p>威威猫不是一只普通的猫，普通的猫喜欢吃鱼，但威威猫最喜欢吃鸡腿。他每天都在不停的吃啊吃，吃了一只又一只鸡腿。现在他遇到了一个难题，如果他的体重太胖那么他的主人就不给他吃鸡腿了，所以他需要你的帮助。</p>
+<p>威威猫的身体由n个器官构成，由于他的身体很特殊所以他的增长也很特殊（不要问为什么，喜欢吃鸡腿的猫已经够奇怪了）。<span style="color: #e23922;">他的增长有个k1和k2系数，而且每天的增长量和前一天有关</span>，我们假设这n个器官在第i天的数值分别是a(i,1), a(i,2), a(i,3) …… a(i,n)，那么，第i+1天他每个器官的数值就会变成:</p>
+<p>a(i+1,1) = k1 <em> a(i,1) + k2 </em> a(i,2)</p>
+<p>a(i+1,2) = k1 <em> a(i,2) + k2 </em> a(i,3)</p>
+<p>……</p>
+<p>a(i+1,n) = k1 <em> a(i,n) + k2 </em> a(i,1)</p>
+<p>威威猫的体重等于他的所有器官的数值之和，并且他还拥有一个特殊的机能，就是会自动检测自己的体重，<span style="color: #e23922;">如果他的体重比K大，那么就会自动停止生长</span>（为了每天都能吃到鸡腿），由于威威猫的特殊身体构造<span style="color: #e23922;">他的体重是可能会变成负数的</span>。<span style="color: #ffffff;">（本來是想不應該吐槽題目內容的但是這個體重負數真的瞬間讓我感覺到了這隻貓在物理和物質上的逆天艾瑪忍不住了……</span></p>
+<p>现在我给你n个器官的初始数值和他的增长系数k1,k2，请问他几天之后会停止生长，如果他永远无法停止生长那么就输出”inf”。(引号不用输出)<br><span style="color: #5999e1;">核心的計算就在於用遞推推導第i+1天的體重和第i天的關係，小難點是如何判斷永遠無法停止生長。<br>設總體重函數為<em><strong>K(i)</strong></em>，其中i表示天數且<strong><em>i≥1</em></strong>。則求和為</span></p>
+</blockquote>
+<p><strong><em>K(i+1)=∑(t=1,n)k1<em>a(i,t)+k2</em>a(i,t)=∑(t=1,n)(k1+k2)*a(i,t)</em></strong></p>
+<p><span style="color: #5999e1;">沒有數學公式插件略麻煩就這樣將就吧，推導並不難，仔細觀察一下就知道。總結一下這條式子其實就是</span><strong><em>totalWeight(i+1)=(k1+k2)*totalWeight(i)</em></strong><br><span style="color: #5999e1;">由於體重能負增長，因此</span><strong><em>(k1+k2)</em></strong><span style="color: #5999e1;">可以小於1或者為負數。因此當</span><strong><em>(k1+k2)&lt;1</em></strong><span style="color: #5999e1;">並且</span><strong><em>(k1+k2)&lt;1</em></strong><span style="color: #5999e1;">的時候，它就永遠無法停止生長（永遠負增長）。</span></p>
+<blockquote>
+<p><strong>Input</strong></p>
+<p>输入数据第一行是一个正整数T，表示有T组测试数据；</p>
+<p>每组数据的第一行包含4个数字n,k1,k2,k，代表威威猫有n个器官，他的生长系数是k1,k2，当体重超过k的时候他就停止生长。</p>
+<p>接下来的一行是n个数ai，代表威威猫每个器官第一天的数值是多少。</p>
+<p><strong> [Technical Specification]</strong></p>
+<p>T ≤100</p>
+<p>1 ≤ n ≤ 10000</p>
+<p>-100 ≤ k1, k2 ≤ 100</p>
+<p>1 ≤ k ≤ 10^18</p>
+<p>1 ≤ ai ≤ 1000（1 ≤ i ≤ n）<br><span style="color: #5999e1;">Sample Input在下面有，可以直观看到数据的格式。这里主要是各项数据的范围。主要注意的是检查数据的范围……不过这个老是出bug就没有写在代码里了。<br>还有一个小细节就是……我觉得k1,k2,k,ai都可以是浮点数，也就是float。这个在后面的代码里也用了float处理。（各种互相套的parse方法写得累不爱……这点上Ruby真是超级方便）  </span><br><strong>Output</strong></p>
+<p>对于每组测试数据，请首先输出”Case #X: “，X代表测试用例的编号，然后输出一个数ans，代表ans天之后他会停止生长，如果不会停止就输出inf.</p>
+<p>具体可参见sample output。</p>
+<p><strong>Sample Input</strong></p>
+<p>2<span style="color: #5999e1;">————————将要测试的数据的组数</span></p>
+<p>5 1 1 10<span style="color: #5999e1;">———————第一组数据的各个系数，器官数5，k1=1,k2=1,体重限制10</span></p>
+<p>1 1 1 1 1<span style="color: #5999e1;">————————第一组各个器官的重量</span></p>
+<p>5 1 1 500<span style="color: #5999e1;">——————————第二组数据的各项系数，器官数5，k1=1,k2=1,体重限制500</span></p>
+<p>1 1 1 1 1<span style="color: #5999e1;">————————————第二组各个器官的重量</span><br><span style="color: #5999e1;">最后输出的样子应该是这样的。</span><br><strong>Sample Output</strong></p>
+<p>Case #1: 2</p>
+<p>Case #2: 7<br>总的来说不是很难的题目。正好小小复习了一下InputStreamReader和BufferedReader，早就忘记怎么用这两个了囧……<br>代码在后一页。</p>
+</blockquote>
+<!--nextpage-->
+<p>用示例數據運行的結果是這樣的。<br><img src="http://www.areazero-rirvana.net/blog/wp-content/uploads/2013/05/1D19B51F-1A51-4C37-994F-7C2722BB2D40.jpg" alt=""></p>
+<p>[java]<br>import java.io.*;<br>import java.util.ArrayList;</p>
+<p>public class Cat{<br>    private int n;        //Quantities of organs<br>    private int t;        //Number of groups of test data<br>    private float k1,k2;    //Coefficients<br>    private float k;        //Given upper bound weights<br>    private float firstDayWeight;    //Weight on the 1st day<br>    private float totalWeight;        //Total weight by the sum of each organ<br>    ArrayList out = new ArrayList();    //output string list</p>
+<pre><code>//Cat&apos;s weight on the day d.
+private float weight(int d){
+    totalWeight = firstDayWeight;
+    for(int i = 1; i &amp;lt; d; i++)
+        totalWeight *= (k1 + k2);
+
+    return totalWeight;
+}
+
+public String weightGrow(){
+    int day = 1;
+    if (weight(1) &amp;lt;= k) {
+        if((k1 + k2) &amp;lt;= 1)
+            return &amp;quot;inf&amp;quot;;
+        else{
+            while (weight(day) &amp;lt;= k)
+                day++;
+        }
+    }
+    if (day == 1)
+        return Integer.valueOf(day).toString();
+    else
+        return Integer.valueOf(day - 1).toString();
+
+}
+
+public void input(){
+    String s;    //string for storing the read in
+    InputStreamReader isr = new InputStreamReader(System.in);
+    BufferedReader br = new BufferedReader(isr);
+
+    try{
+        s = br.readLine();
+        t = Integer.parseInt(s);
+
+        while(t &amp;lt;= 0 || t &amp;gt;= 100){
+            System.out.println(&amp;quot;Number of groups of data is INCORRECT!RE-INPUT!&amp;quot;);
+            s = br.readLine();
+            t = Integer.parseInt(s);
+        }
+
+        for (int i = 1;i &amp;lt;= t;i++){
+            String baseInfo[];    //String array to store the basic setting of the cat
+            String organList[];    //String array to store the weight of each organ.
+
+            try{
+
+                s = br.readLine();
+                baseInfo = s.split(&amp;quot; &amp;quot;);
+
+                if (baseInfo.length != 4)
+                    out.add(&amp;quot;Format of the basic info. of the &amp;quot;+i+&amp;quot;th group is INCORRECT!&amp;quot;);
+                else{
+                    //Range check of each coefficients should be put here
+                    //But the checking conditions are soooooooooo long.
+                    //Check the Technical Specification if you the future me don&apos;t know the conditions.
+                    //I&apos;m too sleepy to code it.
+
+                    n = Integer.parseInt(baseInfo[0]);
+                    k1 = Float.parseFloat(baseInfo[1]);
+                    k2 = Float.parseFloat(baseInfo[2]);
+                    k = Float.parseFloat(baseInfo[3]);
+
+                    s = br.readLine();
+                    organList = s.split(&amp;quot; &amp;quot;);
+                    firstDayWeight = 0;
+                    if(organList.length != n)
+                        out.add(&amp;quot;Format of the Data is INCORRECT!&amp;quot;);
+                    else{
+                        for(int o = 0; o &amp;lt; n;o++)
+                            firstDayWeight += Float.parseFloat(organList[o]);    //Range check should make appearance here.
+
+                        out.add(&amp;quot;Case #&amp;quot; + i + &amp;quot;: &amp;quot; + weightGrow());
+                    }
+                }
+            }catch(IOException e){
+                e.printStackTrace();
+            }
+        }
+    }catch(IOException e){
+        e.printStackTrace();
+    }
+}
+
+public void output(){
+    for(int i =0; i&amp;lt; t;i++)
+        System.out.println(out.get(i));
+}
+
+public static void main(String[] args){
+    Cat cat = new Cat();
+    cat.input();
+    cat.output();
+}
+</code></pre><p>}[/java]</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag">#Java</a>
+          
+            <a href="/tags/Algorithm/" rel="tag">#Algorithm</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/journey/2013-05-06/" rel="next" title="小記除草">
+                <i class="fa fa-chevron-left"></i> 小記除草
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Notes/2013-05-24/" rel="prev" title="貓的體重~SP~">
+                貓的體重~SP~ <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="十六望·Ether0xF" />
+          <p class="site-author-name" itemprop="name">十六望·Ether0xF</p>
+          <p class="site-description motion-element" itemprop="description">Alea jacta est</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">179</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2011 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">十六望·Ether0xF</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'ether0xf';
+      var disqus_identifier = 'Notes/2013-05-20/';
+      var disqus_title = '貓的體重';
+      var disqus_url = 'http://www.areazero-rirvana.net/Notes/2013-05-20/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

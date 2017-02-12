@@ -1,0 +1,746 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic|Courier New:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo,FTP,Git," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="AreaZero" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="事情是这样的陆陆续续给这个Blog添加了一些新东西。比如About页和评论模块等等。
+然而最主要的，还是解决了先前说的FTP同步博客内容的问题。
+问题产生的原因非常显而易见
+
+Hexo有非常方便的用SSH一键部署的方法——然而我的博客空间是传统的虚拟主机，不支持SSH
+未来可能转为VPS，但不是现在，现在只能用FTP
+FTP上传速度慢且稳定性不可靠，尤其每次都上传大量的文件不可行
+手动管理修改内容">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用Git管理FTP上传">
+<meta property="og:url" content="http://www.areazero-rirvana.net/Notes/2016-07-12/index.html">
+<meta property="og:site_name" content="AreaZero">
+<meta property="og:description" content="事情是这样的陆陆续续给这个Blog添加了一些新东西。比如About页和评论模块等等。
+然而最主要的，还是解决了先前说的FTP同步博客内容的问题。
+问题产生的原因非常显而易见
+
+Hexo有非常方便的用SSH一键部署的方法——然而我的博客空间是传统的虚拟主机，不支持SSH
+未来可能转为VPS，但不是现在，现在只能用FTP
+FTP上传速度慢且稳定性不可靠，尤其每次都上传大量的文件不可行
+手动管理修改内容">
+<meta property="og:updated_time" content="2016-07-12T08:52:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用Git管理FTP上传">
+<meta name="twitter:description" content="事情是这样的陆陆续续给这个Blog添加了一些新东西。比如About页和评论模块等等。
+然而最主要的，还是解决了先前说的FTP同步博客内容的问题。
+问题产生的原因非常显而易见
+
+Hexo有非常方便的用SSH一键部署的方法——然而我的博客空间是传统的虚拟主机，不支持SSH
+未来可能转为VPS，但不是现在，现在只能用FTP
+FTP上传速度慢且稳定性不可靠，尤其每次都上传大量的文件不可行
+手动管理修改内容">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 用Git管理FTP上传 | AreaZero </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">AreaZero</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                用Git管理FTP上传
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-07-12T02:28:40+08:00" content="2016-07-12">
+              2016-07-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Notes/" itemprop="url" rel="index">
+                    <span itemprop="name">Notes</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/Notes/2016-07-12/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Notes/2016-07-12/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="事情是这样的"><a href="#事情是这样的" class="headerlink" title="事情是这样的"></a>事情是这样的</h3><p>陆陆续续给这个Blog添加了一些新东西。比如About页和评论模块等等。</p>
+<p>然而最主要的，还是解决了先前说的FTP同步博客内容的问题。</p>
+<p>问题产生的原因非常显而易见</p>
+<ul>
+<li>Hexo有非常方便的用SSH一键部署的方法——然而我的博客空间是传统的虚拟主机，不支持SSH</li>
+<li>未来可能转为VPS，但不是现在，现在只能用FTP</li>
+<li>FTP上传速度慢且稳定性不可靠，尤其每次都上传大量的文件不可行</li>
+<li>手动管理修改内容的上传和替换太累，不符合懒人的价值观，不可行</li>
+</ul>
+<p>总之为了方便的管理内容同步</p>
+<ul>
+<li>希望使用git来管理内容</li>
+<li>可以和Hexo内置的插件一样一键轻松部署</li>
+<li>但是不想踩ftpsync的坑</li>
+</ul>
+<p>至于hexo用于FTP部署的ftpsync插件的坑是怎么回事，我没有亲身体验过。</p>
+<p>因为我看到<a href="http://k99k.com/2015/hexo-ftpsync-bug/" target="_blank" rel="external">这个</a>，这位博主亲身实践同步FTP会把远程端上本地没有的文件删掉。然后我想到我的FTP目录下一些本地端没有备份的零碎的东西和用来放Wordpress Blog的子目录……</p>
+<p>怎么可能会有明知是坑还去踩踩看的勇气。</p>
+<p>就算把数据都备份好，反复地上传和恢复数据还是会很心累。</p>
+<p>所以另寻他法，最后就找到了这个工具：<a href="https://git-ftp.github.io" target="_blank" rel="external">Git-ftp</a></p>
+<p>对于开发这个工具的作者真是感激不尽。</p>
+<a id="more"></a>
+<h3 id="Git-ftp可以用来做什么"><a href="#Git-ftp可以用来做什么" class="headerlink" title="Git-ftp可以用来做什么"></a>Git-ftp可以用来做什么</h3><p>这个工具使用git的方式和指令来建立仓库并且管理内容，然后只把修改的内容上传到FTP进行整合，大幅减少重复上传。</p>
+<p>不仅是静态博客，如果平日里需要频繁地向FTP提交内容，这个工具也是得力的助手。</p>
+<p>因为我只用来上传Hexo的内容，所以结合Hexo的方式简单说说使用方法。</p>
+<p>前提是，已经知道Git是什么以及如何<strong>在终端里</strong>使用。</p>
+<p>有很多使用Hexo的用户都把博客部署在Github或者Gitcafe上，就算不是程序猿，想必多少知道Git是什么。</p>
+<p>但却未必接触过Git的命令行，然而这个工具只有命令行界面。</p>
+<p>如果不熟悉Git的命令行，可以看看这个<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">浅显易懂的Git教程</a>。</p>
+<h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>虽然说Git-ftp只有命令行界面，但是用起来真的很简单。</p>
+<p>设置三行命令，上传一行，更新两行。能解决大部分需求。</p>
+<p>更多的选项，都写在github的<a href="https://github.com/git-ftp/git-ftp/blob/develop/man/git-ftp.1.md" target="_blank" rel="external">手册</a>里。想折腾的时候翻一下。</p>
+<h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>强烈建议自查<a href="https://github.com/git-ftp/git-ftp/blob/develop/INSTALL.md" target="_blank" rel="external">安装指南</a>。</p>
+<p>Linux和Windows需要一些安装上的配置，没有实践过，不知道会不会出现什么问题。</p>
+<p>macOS的话，使用homebrew便可以安装，快捷，简便。</p>
+<h4 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h4><ol>
+<li><p>首先在命令行进入hexo目录下的<code>/public</code>，因为最终要上传的静态页面都放在这个目录下，只要管理这个文件夹的变动就好。</p>
+</li>
+<li><p>使用<code>git init</code>，建立仓库</p>
+</li>
+<li><p>如果目录下已经有先前生成好的内容，可以用<code>git add *</code>一口气添加所有内容</p>
+</li>
+<li><p>用<code>git status</code>查看目前的状态，应该会告诉你「这些还有这些全被添加好啦」。此时用<code>git commit -m &quot;message&quot;</code>把添加的内容推送到仓库里。</p>
+</li>
+<li><p>配置git-ftp:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git config git-ftp.url ftp.example.com/public_html</div><div class="line">git config git-ftp.user username</div><div class="line">git config git-ftp.password password</div></pre></td></tr></table></figure>
+<p>要注意的是第一行的ftp地址。要在空间的根目录下部署网页，内容要放入<code>/public</code>或者<code>/public_html</code>之类的目录中才能生效，所以不要忘记在FTP地址后面加上public目录的路径。</p>
+</li>
+<li><p>上传内容：</p>
+<ul>
+<li>如果FTP中此时还空无一物，用<code>git ftp init</code>上传hexo/public中所有内容即可</li>
+<li>如果FTP中已经有一些以前上传的内容了，用<code>git ftp catchup</code>来更新FTP端的内容。</li>
+</ul>
+</li>
+<li><p>日常更新&amp;发布：</p>
+<ol>
+<li>写好日志然后生成好静态页面后，在命令行中进入<code>/public</code></li>
+<li>用<code>git status</code>查看哪些文件被改动过了，然后用<code>git add file1, file2,…</code>来添加被修改和还未被追踪的文件。</li>
+<li><code>git commit -m &quot;message&quot;</code>确认修改</li>
+<li><code>git ftp push</code>把修改的内容上传到FTP</li>
+</ol>
+</li>
+</ol>
+<p>是不是超级简单方便。</p>
+<p>喜欢的话请不要忘记去Github上给这个项目点个Star。</p>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>即使这样，更新的时候uploading还是神一样慢。</p>
+<p>这是FTP本身的问题，当然还有带宽的问题。我家的上行速度向来慢得感人。</p>
+<p>根本的解决办法是，不要用什么FTP！</p>
+<p>当然还有一些亡羊补牢的措施：</p>
+<ul>
+<li>使用<code>hexo g -w</code>来生成静态页面。这样只会生成修改和新增内容，不会把post下所有内容全部重新生成一次。</li>
+<li>不要没事去改动重新生成public目录下已经生成好的内容。多少能减轻上传的量。</li>
+<li>如果迫不得已要用到<code>hexo clean</code>……那么整个git仓库包括log日志都会被删除掉。<ul>
+<li>改善这个问题的办法是在hexo project下建立git仓库，并把<code>/public</code>目录作为submodule来管理。</li>
+</ul>
+</li>
+<li>如果确认那些重新被生成的内容和FTP上的并没有什么区别，真的没有上传的必要，可以用<code>git checkout -- &lt;file&gt;</code>无视这些文件的修改，只add和commit真正更新了的内容。</li>
+</ul>
+<p>应该多少对改善窘况有所帮助。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Hexo/" rel="tag">#Hexo</a>
+          
+            <a href="/tags/FTP/" rel="tag">#FTP</a>
+          
+            <a href="/tags/Git/" rel="tag">#Git</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/journey/2016-07-05/" rel="next" title="Hello Hexo!">
+                <i class="fa fa-chevron-left"></i> Hello Hexo!
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/Notes/2016-07-30/" rel="prev" title="R Programming - Subsetting">
+                R Programming - Subsetting <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="十六望·Ether0xF" />
+          <p class="site-author-name" itemprop="name">十六望·Ether0xF</p>
+          <p class="site-description motion-element" itemprop="description">Alea jacta est</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">179</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#事情是这样的"><span class="nav-number">1.</span> <span class="nav-text">事情是这样的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git-ftp可以用来做什么"><span class="nav-number">2.</span> <span class="nav-text">Git-ftp可以用来做什么</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置"><span class="nav-number">3.</span> <span class="nav-text">配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">3.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置"><span class="nav-number">3.2.</span> <span class="nav-text">设置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#补充"><span class="nav-number">4.</span> <span class="nav-text">补充</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2011 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">十六望·Ether0xF</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'ether0xf';
+      var disqus_identifier = 'Notes/2016-07-12/';
+      var disqus_title = '用Git管理FTP上传';
+      var disqus_url = 'http://www.areazero-rirvana.net/Notes/2016-07-12/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>

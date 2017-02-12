@@ -1,0 +1,667 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic|Courier New:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Vim," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="AreaZero" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="其實現在的內容就是在vim裏用vimrepress插件寫的。
+雖然說只是想順便地熟悉vim。因為手感實在太好了。
+不过为了成功设置xmlrpc的error还是稍微折腾了我一下。
+其實一開始打算學習Emacs。因為Lisp的大名如雷貫耳。加上Emacs又人稱偽裝成操作系統的編輯器（還有經典的煮咖啡功能，当然并不是用超文本咖啡壶控制协议&amp;lt;(=￣ˇ￣=)&amp;gt;），聽起來實在是狂霸酷拽屌炸天。
+但">
+<meta property="og:type" content="article">
+<meta property="og:title" content="玩了一晚上编辑器">
+<meta property="og:url" content="http://www.areazero-rirvana.net/Notes/2013-07-06/index.html">
+<meta property="og:site_name" content="AreaZero">
+<meta property="og:description" content="其實現在的內容就是在vim裏用vimrepress插件寫的。
+雖然說只是想順便地熟悉vim。因為手感實在太好了。
+不过为了成功设置xmlrpc的error还是稍微折腾了我一下。
+其實一開始打算學習Emacs。因為Lisp的大名如雷貫耳。加上Emacs又人稱偽裝成操作系統的編輯器（還有經典的煮咖啡功能，当然并不是用超文本咖啡壶控制协议&amp;lt;(=￣ˇ￣=)&amp;gt;），聽起來實在是狂霸酷拽屌炸天。
+但">
+<meta property="og:updated_time" content="2016-07-12T15:25:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="玩了一晚上编辑器">
+<meta name="twitter:description" content="其實現在的內容就是在vim裏用vimrepress插件寫的。
+雖然說只是想順便地熟悉vim。因為手感實在太好了。
+不过为了成功设置xmlrpc的error还是稍微折腾了我一下。
+其實一開始打算學習Emacs。因為Lisp的大名如雷貫耳。加上Emacs又人稱偽裝成操作系統的編輯器（還有經典的煮咖啡功能，当然并不是用超文本咖啡壶控制协议&amp;lt;(=￣ˇ￣=)&amp;gt;），聽起來實在是狂霸酷拽屌炸天。
+但">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 玩了一晚上编辑器 | AreaZero </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">AreaZero</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                玩了一晚上编辑器
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2013-07-06T14:48:26+08:00" content="2013-07-06">
+              2013-07-06
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Notes/" itemprop="url" rel="index">
+                    <span itemprop="name">Notes</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/Notes/2013-07-06/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="Notes/2013-07-06/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>其實現在的內容就是在vim裏用vimrepress插件寫的。</p>
+<p>雖然說只是想順便地熟悉vim。<br>因為手感實在太好了。</p>
+<p>不过为了成功设置xmlrpc的error还是稍微折腾了我一下。</p>
+<p>其實一開始打算學習Emacs。因為Lisp的大名如雷貫耳。加上Emacs又人稱偽裝成操作系統的編輯器（還有經典的<a href="http://emarsden.chez.com/downloads/" target="_blank" rel="external">煮咖啡</a>功能，当然并不是用<a href="http://zh.wikipedia.org/wiki/超文本咖啡壶控制协议" target="_blank" rel="external">超文本咖啡壶控制协议</a>&lt;(=￣ˇ￣=)&gt;），聽起來實在是<del>狂霸酷拽屌炸天</del>。</p>
+<p>但是實際用起來以後，覺得自己像在玩avg一樣……整個晚上讀tutorial的同時就在不停按ctrl和Meta鍵。雖然說Emacs的快捷鍵和UNIX終端下的快捷鍵很多是一樣的，但是一直這樣用真的非常反健康。<br>畢竟……我上三個月的時候就已經確實變成一個腕管綜合徵患者了——簡單來說，得了鍵盤鼠標手——而且還是雙手。<br>全都多虧一直以来握壓感筆太緊張和這幾個月玩劍三的成果.因為我的劍三的鍵位不是數字鍵，全都是用字母的，其中小指用得最多，因為那個鍵位是半自動宏和主要攻擊技能的鍵位。</p>
+<p>長年累月造成了現在悲劇……</p>
+<p>當然這並不是說Emacs不好。說出這種話題就真怕會引發編輯器的口水戰。因為連Emacs的門都沒完全走進去，實在不敢評論Emacs如何如何。但是又不想像別的Emacs用戶一樣將ctrl的快捷鍵全都映射到Caps Lock上。</p>
+<p>所以大概在Tutorial讀到64%的時候在喵喵姐的建議下安裝了MacVim.</p>
+<p>hjkl移動光標的方式真是很爽快。非常簡便動感，像玩ACT遊戲一樣。<br>玩劍三的時候也有朋友說過我這個鍵位如果是別人上號的話根本不會用……但是真的非常靈活好用。有人看到後誤以為我是PVPer，其實我是純得不能再純的PVEer。</p>
+<p>沒錯，就是這樣。Vim用起來就像在玩ACT遊戲一樣富有節奏感。看起来十分复杂，实际上完全是用手指肌肉去记忆的动作，一下子就能上手了。唯一的困難就是快捷鍵组合實在太多了，多到已經達到能搓招的程度了——那已經是FTG遊戲，不是我的守備範圍了。<br>不過作為默認的光標移動鍵位之一（雖然方向鍵也可以，但是和help.txt建議的一樣，方向鍵會讓手離開打字位置，變得不便），在insert mode和normal mode之間切換的時候實際上手指還是需要移動一個鍵位。<br>今晚不知道有多少次忘記移動就直接按下去了，導致h鍵在我的腦海裏一直沒有什麼存在感。</p>
+<p>如果能把光標鍵改成jikl，insert mode toggle改成h多好。又直觀又不需要挪動鍵位（玩遊戲改鍵位的經驗）。</p>
+<p>不過還是等之后再来研究key mapping和插件等諸多問題。</p>
+<p>順便一說<a href="http://zh.wikipedia.org/wiki/编辑器之战" target="_blank" rel="external">編輯器之戰</a>實在是太有趣了。從旁觀者和outsider的角度來看，就像人世百態縮影的一種一樣。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Vim/" rel="tag">#Vim</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/Notes/2013-07-03/" rel="next" title="約瑟夫環問題Josephus Problem">
+                <i class="fa fa-chevron-left"></i> 約瑟夫環問題Josephus Problem
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/journey/2013-07-08/" rel="prev" title="累感，不愛">
+                累感，不愛 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="十六望·Ether0xF" />
+          <p class="site-author-name" itemprop="name">十六望·Ether0xF</p>
+          <p class="site-description motion-element" itemprop="description">Alea jacta est</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">179</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">6</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">116</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2011 - 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">十六望·Ether0xF</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'ether0xf';
+      var disqus_identifier = 'Notes/2013-07-06/';
+      var disqus_title = '玩了一晚上编辑器';
+      var disqus_url = 'http://www.areazero-rirvana.net/Notes/2013-07-06/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
