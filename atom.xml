@@ -39,24 +39,6 @@
   </entry>
   
   <entry>
-    <title>some琐事</title>
-    <link href="http://www.areazero-rirvana.net/journey/2017-01-10/"/>
-    <id>http://www.areazero-rirvana.net/journey/2017-01-10/</id>
-    <published>2017-01-10T13:43:44.000Z</published>
-    <updated>2017-01-10T14:32:44.000Z</updated>
-    
-    <content type="html"></content>
-    
-    <summary type="html">
-    
-    </summary>
-    
-      <category term="The Journey" scheme="http://www.areazero-rirvana.net/categories/journey/"/>
-    
-    
-  </entry>
-  
-  <entry>
     <title>入职一个月</title>
     <link href="http://www.areazero-rirvana.net/journey/2016-11-17/"/>
     <id>http://www.areazero-rirvana.net/journey/2016-11-17/</id>
@@ -777,6 +759,37 @@
     
     
       <category term="プリキュア" scheme="http://www.areazero-rirvana.net/tags/%E3%83%97%E3%83%AA%E3%82%AD%E3%83%A5%E3%82%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>せつな</title>
+    <link href="http://www.areazero-rirvana.net/paints/2014-04-08/"/>
+    <id>http://www.areazero-rirvana.net/paints/2014-04-08/</id>
+    <published>2014-04-08T09:31:12.000Z</published>
+    <updated>2016-07-12T14:31:37.000Z</updated>
+    
+    <content type="html">&lt;p&gt;這邊忘記發了。&lt;/p&gt;
+&lt;p&gt;剎那只在過場動畫裏出現過的衣服，想象了一下全身的設計。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://www.areazero-rirvana.net/blog/wp-content/uploads/2014/04/14-04-02.jpg&quot; alt=&quot;14 04 02&quot; title=&quot;14-04-02.jpg&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;這邊忘記發了。&lt;/p&gt;
+&lt;p&gt;剎那只在過場動畫裏出現過的衣服，想象了一下全身的設計。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://www.areazero-rirvana.net/blog/wp-content/uploads/2014/04/14-04-02.jpg&quot;
+    
+    </summary>
+    
+      <category term="画板" scheme="http://www.areazero-rirvana.net/categories/paints/"/>
+    
+    
+      <category term="プリキュア" scheme="http://www.areazero-rirvana.net/tags/%E3%83%97%E3%83%AA%E3%82%AD%E3%83%A5%E3%82%A2/"/>
+    
+      <category term="フレッシュプリキュア" scheme="http://www.areazero-rirvana.net/tags/%E3%83%95%E3%83%AC%E3%83%83%E3%82%B7%E3%83%A5%E3%83%97%E3%83%AA%E3%82%AD%E3%83%A5%E3%82%A2/"/>
+    
+      <category term="東せつな" scheme="http://www.areazero-rirvana.net/tags/%E6%9D%B1%E3%81%9B%E3%81%A4%E3%81%AA/"/>
     
   </entry>
   
