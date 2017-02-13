@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.areazero-rirvana.net/"/>
-  <updated>2017-01-13T15:50:44.000Z</updated>
+  <updated>2017-02-13T16:48:55.000Z</updated>
   <id>http://www.areazero-rirvana.net/</id>
   
   <author>
@@ -14,6 +14,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>又一年了</title>
+    <link href="http://www.areazero-rirvana.net/journey/2017-02-14/"/>
+    <id>http://www.areazero-rirvana.net/journey/2017-02-14/</id>
+    <published>2017-02-13T16:38:33.000Z</published>
+    <updated>2017-02-13T16:48:55.000Z</updated>
+    
+    <content type="html">&lt;p&gt;年后上班都上了一星期了。&lt;/p&gt;
+&lt;p&gt;其实没什么可说的。依然很忙，腾不出时间来做其他事情。&lt;br&gt;空间主机到期了，想换去VPS上。结果在linode部署好了以后遇到了ToS攻击。&lt;br&gt;实在是腾不出时间来折腾服务器部署什么的，遂也放弃了。&lt;br&gt;保留了原来的域名，转战到了github pages上。&lt;br&gt;虽然独立的主机空间和个人网站可以说是自从我接触互联网以来的一大心愿，但是github更简单更有效。挺好的。&lt;br&gt;嘛，实用主义并不是一种妥协。&lt;br&gt;只是确实也渐渐地不知道有什么可写。生活好像并没有年少时那么丰富多彩，值得记录了。&lt;br&gt;无非是春节假期打通了Persona4G，等待黑魂3最后一个DLC，板子坏了真的想画都画不了东西了，在心里想着一个不会写下来的故事，看了几本书然后又买了一堆书，balabala…&lt;br&gt;有个最低限度的放日志的地方就够了。&lt;br&gt;总归不过是人类史中一粒尘埃罢。&lt;/p&gt;
+&lt;p&gt;今年的愿望是，技术精进，涨工资，腾出时间来学习。&lt;br&gt;合掌。&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;年后上班都上了一星期了。&lt;/p&gt;
+&lt;p&gt;其实没什么可说的。依然很忙，腾不出时间来做其他事情。&lt;br&gt;空间主机到期了，想换去VPS上。结果在linode部署好了以后遇到了ToS攻击。&lt;br&gt;实在是腾不出时间来折腾服务器部署什么的，遂也放弃了。&lt;br&gt;保留了原来的域名，转战到了
+    
+    </summary>
+    
+      <category term="The Journey" scheme="http://www.areazero-rirvana.net/categories/journey/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Peace out</title>
@@ -759,37 +783,6 @@
     
     
       <category term="プリキュア" scheme="http://www.areazero-rirvana.net/tags/%E3%83%97%E3%83%AA%E3%82%AD%E3%83%A5%E3%82%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>せつな</title>
-    <link href="http://www.areazero-rirvana.net/paints/2014-04-08/"/>
-    <id>http://www.areazero-rirvana.net/paints/2014-04-08/</id>
-    <published>2014-04-08T09:31:12.000Z</published>
-    <updated>2016-07-12T14:31:37.000Z</updated>
-    
-    <content type="html">&lt;p&gt;這邊忘記發了。&lt;/p&gt;
-&lt;p&gt;剎那只在過場動畫裏出現過的衣服，想象了一下全身的設計。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://www.areazero-rirvana.net/blog/wp-content/uploads/2014/04/14-04-02.jpg&quot; alt=&quot;14 04 02&quot; title=&quot;14-04-02.jpg&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;這邊忘記發了。&lt;/p&gt;
-&lt;p&gt;剎那只在過場動畫裏出現過的衣服，想象了一下全身的設計。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://www.areazero-rirvana.net/blog/wp-content/uploads/2014/04/14-04-02.jpg&quot;
-    
-    </summary>
-    
-      <category term="画板" scheme="http://www.areazero-rirvana.net/categories/paints/"/>
-    
-    
-      <category term="プリキュア" scheme="http://www.areazero-rirvana.net/tags/%E3%83%97%E3%83%AA%E3%82%AD%E3%83%A5%E3%82%A2/"/>
-    
-      <category term="フレッシュプリキュア" scheme="http://www.areazero-rirvana.net/tags/%E3%83%95%E3%83%AC%E3%83%83%E3%82%B7%E3%83%A5%E3%83%97%E3%83%AA%E3%82%AD%E3%83%A5%E3%82%A2/"/>
-    
-      <category term="東せつな" scheme="http://www.areazero-rirvana.net/tags/%E6%9D%B1%E3%81%9B%E3%81%A4%E3%81%AA/"/>
     
   </entry>
   
